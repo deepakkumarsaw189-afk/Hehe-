@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Morning Tannu 🌸</title>
+
+<style>
+body {
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background: linear-gradient(135deg,#ffd1dc,#ffe4ec,#fff0f5);
+    overflow:hidden;
+    color:#ff4f81;
+}
+
+/* Pages */
+.page {
+    display:none;
+    height:100vh;
+    width:100vw;
+    text-align:center;
+    padding:30px 15px;
+    box-sizing:border-box;
+}
+
+.active {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    animation: fade 1s;
+}
+
+@keyframes fade {
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+h1 {font-size:2.2rem;}
+p {font-size:1.2rem;}
+
+button {
+    background:#ff4f81;
+    border:none;
+    padding:12px 22px;
+    border-radius:30px;
+    color:white;
+    font-size:1rem;
+    margin-top:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Floating hearts */
+.heart {
+    position:fixed;
+    font-size:20px;
+    animation: float 6s linear infinite;
+    opacity:0.7;
+}
+
+@keyframes float {
+    from {transform: translateY(100vh) scale(1);}
+    to {transform: translateY(-10vh) scale(1.5);}
+}
+
+/* Cute emoji image replacement */
+.cute {
+    font-size:90px;
+    margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌸 Page 1 -->
+<div id="page1" class="page active">
+    <h1>Good Morning Tannu ☀️💖</h1>
+    <p>You are the sunshine of my life 🌸</p>
+    <button onclick="nextPage(2)">Tap for a Cute Message 💌</button>
+</div>
+
+<!-- 💌 Page 2 -->
+<div id="page2" class="page">
+    <h1>Hey Beautiful 💕</h1>
+    <p>
+        May your morning be as sweet as your smile ✨<br>
+        And your day filled with love and happiness 🌷
+    </p>
+    <button onclick="nextPage(3)">One More Surprise 🎁</button>
+</div>
+
+<!-- 🎁 Page 3 -->
+<div id="page3" class="page">
+    <h1>I Made This Just For You 🥺💖</h1>
+    <p>You make my world prettier every single day 🌸</p>
+    <div class="cute">💞🐻🌸</div>
+    <button onclick="nextPage(1)">Replay 💞</button>
+</div>
+
+<script>
+function nextPage(page) {
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById('page'+page).classList.add('active');
+}
+
+/* Floating hearts generator */
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = Math.random()*20 + 15 + "px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,500);
+</script>
+
+</body>
+</html>
